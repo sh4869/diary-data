@@ -22,17 +22,17 @@ jobs:
       with:
         repository: sh4869/dgen
         path: dgen
-    - name: Install latest nightly
+    - name: Install Rust tool chain latest nightly
       uses: actions-rs/toolchain@v1
       with:
           toolchain: nightly
           override: true
-    - name: Run cargo check
+    - name: Build dgen
       run: cargo install --path .
       working-directory: ./dgen
     - name: Run dgen
       run: dgen
-    - name: GitHub Action for Firebase
+    - name: Deploy files to Firebase
       uses: w9jds/firebase-action@v2.0.0
       with:
           args: deploy --token $FIREBASE_TOKEN --only hosting --project sh4869-diary
