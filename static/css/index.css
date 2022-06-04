@@ -1,72 +1,13 @@
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: #e3e3e3;
-  max-width: 40rem;
+  max-width: 60rem;
   width: 95%;
   font-size: 100%;
   margin: 0 auto;
 }
 
-/* 各パーツ */
 
-twitter-widget {
-  margin: auto;
-}
-
-/* Spotify */
-iframe {
-  display: block;
-  margin: auto;
-  max-width: 100%;
-}
-
-
-.footnote-definition:first-of-type {
-  margin-top: 3rem;
-  border-top: black solid 1px;
-}
-
-.footnote-definition-label {
-  top: 1rem;
-}
-
-table {
-  width: inherit;
-  margin-left: 1rem;
-  width: 80%;
-  margin: auto;
-}
-th,
-td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-th {
-  background: #f4f4f4;
-}
-
-time.diary {
-  font-family: "Kelly Slab", cursive;
-  display: block;
-  margin: 0 auto;
-  padding: 0.3rem 0.3rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-code,
-tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-}
-
-code {
-  width: 80%;
-  margin: auto;
-}
 
 /* 共通Components */
 
@@ -110,21 +51,14 @@ code {
 
 
 #footer {
+  font-family: "Caveat", cursive;
+  font-size: 1.1rem;
   text-align: center;
   margin-bottom: 1rem;
 }
 
 #footer a {
-  text-decoration: none;
   color: black;
-}
-
-#footer a:hover {
-  text-decoration: underline;
-}
-
-#footer hr {
-  width: 80%;
 }
 
 /* トップページ */
@@ -206,8 +140,8 @@ code {
 /** 本文 **/
 
 .diary {
-  margin-right: 1em;
-  margin-left: 1em;
+  max-width: 40rem;
+  margin: 0 auto;
   margin-bottom: 5em;
 }
 
@@ -237,7 +171,72 @@ code {
 }
 
 .diary img {
+  max-width: 90%;
+  border: 0.1px solid #e3e3e3;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 各パーツ */
+
+twitter-widget {
+  margin: auto;
+}
+
+/* Spotify */
+iframe {
+  display: block;
+  margin: auto;
   max-width: 100%;
+}
+
+
+.footnote-definition:first-of-type {
+  margin-top: 3rem;
+  border-top: black solid 1px;
+}
+
+.footnote-definition-label {
+  top: 1rem;
+}
+
+table {
+  width: inherit;
+  margin-left: 1rem;
+  width: 80%;
+  margin: auto;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+th {
+  background: #f4f4f4;
+}
+
+time.diary {
+  font-family: "Kelly Slab", cursive;
+  display: block;
+  margin: 0 auto;
+  padding: 0.3rem 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+code,
+tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+code {
+  width: 80%;
+  margin: auto;
 }
 
 blockquote {
