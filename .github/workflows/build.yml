@@ -38,24 +38,28 @@ jobs:
           args: deploy --token $FIREBASE_TOKEN --only hosting --project diary-sh4869-sh
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-    - name: Slack Notification
-      if: success()
-      uses: tokorom/action-slack-incoming-webhook@master
-      env:
-        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_HOOKS }}
+    - name: Send custom JSON data to Slack workflow
+      id: slack
+      uses: slackapi/slack-github-action@v1.23.0
       with:
-        text: "[DIARY] DEPLOY COMPLETE"
-        attachments: |
-          [
-            {
-              "color": "good",
-              "author_name": "${{ github.actor }}",
-              "author_icon": "${{ github.event.sender.avatar_url }}",
-              "fields": [
-                {
-                  "title": "Commit Message",
-                  "value": "${{ github.event.head_commit.message }}"
-                }
-              ]
-            }
-          ]
+        # For posting a rich message using Block Kit
+        payload: |
+          {
+            "text": "[DIARY] DEPLOY COMPLETE",
+             "attachments": [
+              {
+                "color": "good",
+                "author_name": "${{ github.actor }}",
+                "author_icon": "${{ github.event.sender.avatar_url }}",
+                "fields": [
+                  {
+                    "title": "Commit Message",
+                    "value": "${{ github.event.head_commit.message }}"
+                  }
+                ]
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_HOOKS }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
