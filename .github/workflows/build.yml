@@ -32,7 +32,7 @@ jobs:
     - name: Run dgen
       run: dgen
     - name: Build Diary Calendar
-      run: yarn && yarn build && 
+      run: yarn && yarn build
       working-directory: ./dgen-calendar
     - name: copy calendar
       run: cp -r dgen-calendar/dist docs/calendar
