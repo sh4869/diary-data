@@ -33,7 +33,10 @@ jobs:
     - name: Run dgen
       run: dgen
     - name: Build Diary Calendar
-      run: cd dgen-calendar && yarn && yarn build && cd - && cp -r dgen-calendar/dist docs/calendar
+      run: yarn && yarn build && 
+      working-directory: ./dgen-calendar
+    - name: copy calendar
+      run: cp -r dgen-calendar/dist docs/calendar
     - name: Deploy files to Firebase
       uses: w9jds/firebase-action@v2.0.0
       with:
