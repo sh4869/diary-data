@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: true
-        ref: main
+        ref: diary-data
     - name: update submodules
       run: |
         git submodule update --remote ./dgen-calendar
