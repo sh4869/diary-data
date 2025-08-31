@@ -31,7 +31,7 @@ var rootCmd = &cobra.Command{
 		}
 		info := getTwoWeekInfo(indexes)
 		f := formatTwoWeekInfo(info)
-		fmt.Println("RESULT=" + f)
+		fmt.Println("RESULT<<EOF" + f + "\nEOF")
 		return nil
 	},
 }
