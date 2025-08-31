@@ -100,7 +100,7 @@ func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 			result += t.Format("01/02")
 		}
 		if _, ok := indexes[key]; ok {
-			result += "  <x|" + indexes[key].Url + ">"
+			result += "  <" + indexes[key].Url + "|x>"
 		} else {
 			result += "   "
 		}
