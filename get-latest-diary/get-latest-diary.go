@@ -98,12 +98,12 @@ func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 		key := t.Format("2006/01/02")
 
 		if _, ok := indexes[key]; ok {
-			result += "  <" + indexes[key].Url + "|o>"
+			result += "<" + indexes[key].Url + "|o>  "
 		} else {
-			result += "  x"
+			result += "x  "
 		}
 		if t.Weekday() == time.Saturday {
-			result += t.Format("|  01/02\\n")
+			result += t.Format(" | 01/02\\n")
 		}
 	}
 	return result
