@@ -14,20 +14,18 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Go
         uses: actions/setup-go@v3
-      - name: Get Latest Diary
-        run: go run get-latest-diary/get-latest-diary.go >> $GITHUB_ENV
       - name: Check Updated Diary
+        id: step
         run: go run get-latest-diary/get-latest-diary.go check >> $GITHUB_ENV
-      - name: Echo environemts
-        run: echo "date ${{ env.DIARY_LATEST_DATE }} | Updated ${{ env.DIARY_UPDATED }}" 
       - name: Notify To Slack
-        if: ${{ env.DIARY_UPDATED != 'true' }}
-        uses: slackapi/slack-github-action@v1.16.0
+        uses: slackapi/slack-github-action@v2.1.1
         with:
           payload: |
             {
-              "text": "日記が最近投稿されてないよ！(最終投稿日: ${{ env.DIARY_LATEST_DATE }})"
+              "text": "最近の日記の投稿状況\n\n${{ steps.step.outputs.RESULT }}"
             }
+          webhook:  ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
         env:
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
