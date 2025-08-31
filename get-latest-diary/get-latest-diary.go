@@ -75,7 +75,7 @@ func getTwoWeekInfo(indexes map[string]DiaryInfo) map[string]*DiaryInfo {
 	return result
 }
 
-var weekdays = []string{"S", "M", "T", "W", "T", "F", "S"}
+var weekdays = []string{"s", "m", "t", "w", "t", "f", "s"}
 
 func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 	// cli calendar のように投稿されている日は ☑、そうじゃない日は空を表示する
@@ -84,7 +84,7 @@ func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 	for _, day := range weekdays {
 		result += fmt.Sprintf("%3s", day)
 	}
-	result += "\\n"
+	result += "\\n=========================\\n"
 
 	// 1日の曜日を取得
 	start := time.Now().AddDate(0, 0, -14)
