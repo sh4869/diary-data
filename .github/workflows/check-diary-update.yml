@@ -1,0 +1,32 @@
+name: "check diary updated"
+
+on:
+  schedule:
+    - cron: "0 19 * * *"
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check_diary_update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+      - name: Check Updated Diary
+        id: step
+        run: go run get-latest-diary/get-latest-diary.go check >> $GITHUB_ENV
+      - name: Notify To Slack
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          payload: |
+            {
+              "text": "最近の日記の投稿状況\n\n${{ steps.step.outputs.RESULT }}"
+            }
+          webhook:  ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+        env:
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
