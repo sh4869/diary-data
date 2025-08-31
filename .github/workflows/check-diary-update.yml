@@ -27,6 +27,7 @@ jobs:
             }
           webhook:  ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
           webhook-type: webhook-trigger
+          payload-templated: true
         env:
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}

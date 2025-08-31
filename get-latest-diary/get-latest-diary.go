@@ -84,7 +84,7 @@ func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 	for _, day := range weekdays {
 		result += fmt.Sprintf("%3s", day)
 	}
-	result += "\n"
+	result += "\\n"
 
 	// 1日の曜日を取得
 	start := time.Now().AddDate(0, 0, -14)
@@ -105,7 +105,7 @@ func formatTwoWeekInfo(indexes map[string]*DiaryInfo) string {
 			result += "   "
 		}
 		if t.Weekday() == time.Saturday {
-			result += t.Format("  01/02") + "\n"
+			result += t.Format("  01/02\\n") + "\n"
 		}
 	}
 	return result
