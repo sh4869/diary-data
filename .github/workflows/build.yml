@@ -26,10 +26,6 @@ jobs:
       with:
           toolchain: nightly
           override: true
-    # node.js のバージョンを古くしておかないと、 firebase deploy の際にエラーになる
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
     - name: Build dgen
       run: cargo install --path .
       working-directory: ./dgen
@@ -41,7 +37,7 @@ jobs:
     - name: copy calendar
       run: cp -r dgen-calendar/dist docs/calendar
     - name: Deploy to Firebase Hosting
-      uses: FirebaseExtended/action-hosting-deploy@v0.10.0
+      uses: FirebaseExtended/action-hosting-deploy@v0.11.0
       with:
         firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIARY_SH4869_SH }}
         projectId: diary-sh4869-sh
