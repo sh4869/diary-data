@@ -36,12 +36,13 @@ jobs:
       working-directory: ./dgen-calendar
     - name: copy calendar
       run: cp -r dgen-calendar/dist docs/calendar
-    - name: Deploy files to Firebase
-      uses: w9jds/firebase-action@v2.0.0
+    - name: Deploy to Firebase Hosting
+      uses: FirebaseExtended/action-hosting-deploy@v0.10.0
       with:
-          args: deploy --token $FIREBASE_TOKEN --only hosting --project diary-sh4869-sh
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        repoToken: ${{ secrets.GITHUB_TOKEN }}
+        firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIARY_SH4869_SH }}
+        channelId: live
+        projectId: diary-sh4869-sh
     - name: Send custom JSON data to Slack workflow
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
