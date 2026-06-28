@@ -26,6 +26,10 @@ jobs:
       with:
           toolchain: nightly
           override: true
+    # node.js のバージョンを古くしておかないと、 firebase deploy の際にエラーになる
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
     - name: Build dgen
       run: cargo install --path .
       working-directory: ./dgen
