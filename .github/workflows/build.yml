@@ -41,6 +41,7 @@ jobs:
       with:
         firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIARY_SH4869_SH }}
         projectId: diary-sh4869-sh
+        channelId: live
     - name: Send custom JSON data to Slack workflow
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
